@@ -43,9 +43,7 @@ RSpec.describe Dictionary do
 
   it "can print out input in 3 rows" do
     dictionary = Dictionary.new
-    user_input = "ab"
-    # require 'pry';binding.pry
-    expect(dictionary.translate(user_input)).to eq("O.O.\n..O.\n....\n")
+    expect(dictionary.translate("abababababababababababababababababababababababababababababab")).to eq("O.O.\n..O.\n....\n")
   end
 
 end

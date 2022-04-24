@@ -1,2 +1,3 @@
-TEST 1 2 3
-TEST TEST TEST
+O..O..O.O.O.O.
+OOO...O......O
+......O.OOO...

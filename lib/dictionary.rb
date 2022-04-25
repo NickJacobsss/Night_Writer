@@ -31,4 +31,9 @@ module Dictionary
       " " => ["..", "..", ".."],
     }
   end
+
+  def braille_to_eng_hash
+    eng_to_braille_hash.invert
+  end
+
 end

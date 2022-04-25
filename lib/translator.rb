@@ -39,11 +39,7 @@ class Translator
     end
   end
 
-  def character_to_eng(input)
-    braille_to_eng_hash[input]
-  end
-
-  def split_braille_row(input)
+  def organize_braille_row(input)
     rows = [[],[],[]]
     counter = 0
     input.chars.each do |char|
@@ -58,10 +54,10 @@ class Translator
     end
   end
 
-  def row_join_characters(input)
+  def braille_row_join_characters(input)
     counter = 0
     rows = []
-    split_braille_row(input).each do |row|
+    organize_braille_row(input).each do |row|
       rows[counter] = row.join.scan(/../)
       counter += 1
     end
@@ -69,16 +65,16 @@ class Translator
   end
 
   def translate_to_eng(input)
-    input_arr = row_join_characters(input)
+    input_arr = braille_row_join_characters(input)
     output_arr = []
-    english_letters = ""
+    converted_letters = ""
     until input_arr[0].count == 0 do
       input_arr.each do |index|
         output_arr << index[0]
         index.shift
       end
-      english_letters << braille_to_eng_hash[output_arr[-3..-1]]
+    converted_letters << braille_to_eng_hash[output_arr[-3..-1]]
     end
-    english_letters
+    converted_letters
   end
 end

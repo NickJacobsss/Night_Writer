@@ -46,19 +46,14 @@ RSpec.describe Translator do
     expect(translator.eng_to_b_translate("hi my name is nick and this is over fourty characters").length).to eq(339)
   end
 
-  it "can read braille array and output english character" do
-    translator = Translator.new
-    expect(translator.character_to_eng(["O.", "OO", ".."])).to eq("h")
-  end
-
   it "can split braille text into array of rows" do
     translator = Translator.new
-    expect(translator.split_braille_row("O.O.\nO.O.\n.O.O")).to eq([["O", ".","O", "."], ["O", ".","O", "."], [".", "O",".", "O"]])
+    expect(translator.organize_braille_row("O.O.\nO.O.\n.O.O")).to eq([["O", ".","O", "."], ["O", ".","O", "."], [".", "O",".", "O"]])
   end
 
   it "can join split characters into groups of 2 per row " do
     translator = Translator.new
-    expect(translator.row_join_characters("O.O.\nO.O.\n....")).to eq([["O.", "O."], ["O.", "O."], ["..", ".."]])
+    expect(translator.braille_row_join_characters("O.O.\nO.O.\n....")).to eq([["O.", "O."], ["O.", "O."], ["..", ".."]])
   end
 
   it "can output english letters " do
